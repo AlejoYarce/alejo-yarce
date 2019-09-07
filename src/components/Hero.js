@@ -40,21 +40,29 @@ const Text = styled.h1`
 
 class Hero extends React.Component {
   state = {
-    showText: true,
+    showText: false,
   }
 
   componentDidMount() {
     if (window) {
-      window.onscroll = () => {
-        const deviceHeight = window.innerHeight
-        const desiredHeight = deviceHeight + (deviceHeight / 4)
-        const currentScrollPos = window.pageYOffset;
+      this.validateScroll()
 
-        if (desiredHeight < currentScrollPos) {
-          this.setState({ showText: false})
-        } else {
-          this.setState({ showText: true})
-        }
+      window.onscroll = () => {
+        this.validateScroll()
+      }
+    }
+  }
+
+  validateScroll = () => {
+    if (window) {
+      const deviceHeight = window.innerHeight
+      const desiredHeight = deviceHeight + (deviceHeight / 4)
+      const currentScrollPos = window.pageYOffset;
+
+      if (desiredHeight < currentScrollPos) {
+        this.setState({ showText: false})
+      } else {
+        this.setState({ showText: true})
       }
     }
   }
