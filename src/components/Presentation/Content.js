@@ -5,14 +5,23 @@ import { css } from '@emotion/core'
 import mq from '@/components/layout/base'
 import Social from '@/components/Presentation/Social'
 
+const ContentContainer = styled.div`
+  width: 100%;
+  padding: 2rem 0;
+`
 const Title = styled.h1`
   padding-top: 2rem;
   padding-bottom: 3rem;
   font-size: 4.5rem;
 
   ${mq.sm(css`
-    padding-top: unset;
+    padding-top: 0;
     padding-bottom: 4rem;
+    font-size: 3rem;
+  `)}
+
+  ${mq.md(css`
+    font-size: 4.5rem;
   `)}
 `
 const Description = styled.p`
@@ -26,14 +35,14 @@ const Description = styled.p`
     width: unset;
 
     &:last-of-type {
-      padding-bottom: unset;
+      padding-bottom: 0;
     }
   `)}
 `
 
 const Content = () => {
   return (
-    <div>
+    <ContentContainer>
       <Title>Alejo Yarce</Title>
       <Description>
         As Javascript and Open Source technologies lover, I'm very passionate
@@ -44,7 +53,7 @@ const Content = () => {
         being part of actions that matter.
       </Description>
       <Social />
-    </div>
+    </ContentContainer>
   )
 }
 

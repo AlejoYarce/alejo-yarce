@@ -11,7 +11,7 @@ const Container = styled.div`
 
   ${props => props.useGradient
     ? `
-      background-image: linear-gradient(to top, #FFFFFF, #00dea6);
+      background-image: linear-gradient(to top, ${Color.white}, ${Color.caribbeanGreen});
     `
     : ''
   }
