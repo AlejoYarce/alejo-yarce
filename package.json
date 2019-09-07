@@ -1,8 +1,9 @@
 {
-  "name": "alejo-yarce-gatsby",
+  "name": "alejo-yarce",
   "private": true,
-  "description": "Alejo Yarce page using gatsby",
-  "version": "0.1.0",
+  "description": "Personal website",
+  "author": "AlejoYarce <alejo.yarce990@gmail.com>",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -28,9 +29,5 @@
   },
   "devDependencies": {
     "prettier": "^1.18.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/"
   }
 }
