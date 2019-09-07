@@ -1,0 +1,20 @@
+@import './colors';
+@import './grid';
+@import './mixins';
+@import './optimize';
+@import './reset';
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: 'Manjari', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+p {
+  font-family: 'Manjari', sans-serif;
+}

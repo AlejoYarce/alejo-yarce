@@ -1,0 +1,10 @@
+{
+  "emmet.syntaxProfiles": {
+    "vue-html": "html",
+    "vue": "html",
+    "javascript": "jsx"
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+  }
+}
