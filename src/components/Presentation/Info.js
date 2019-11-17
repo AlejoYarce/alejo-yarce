@@ -6,7 +6,8 @@ import { Color } from '@/components/layout/theme'
 import mq from '@/components/layout/base'
 import Content from '@/components/Presentation/Content'
 
-const AlejoYarce = 'https://res.cloudinary.com/alejoyarce/image/upload/c_crop,g_south,h_1900,q_100,w_1500/v1567598025/AlejoYarce_BW_ukjbvn.jpg'
+// const AlejoYarce = 'https://res.cloudinary.com/alejoyarce/image/upload/c_crop,g_south,h_1900,q_100,w_1500/v1567598025/AlejoYarce_BW_ukjbvn.jpg'
+const AlejoYarce = 'https://res.cloudinary.com/alejoyarce/image/upload/c_crop,g_south,h_1900,q_70,w_1500/v1567598025/AlejoYarce_BW_ukjbvn.webp'
 
 const Container = styled.div`
   background-color: ${Color.caribbeanGreen};
