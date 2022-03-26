@@ -16,7 +16,7 @@ export const HomeContainer = styled.div<{ widthRatio: number }>`
 export const ContentContainer = styled.div<{ widthRatio: number }>`
   height: ${({ widthRatio }) => widthRatio}vh;
   width: 80vw;
-  max-width: 70rem;
+  max-width: 150rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,6 +95,6 @@ export const ImageContent = styled.div`
   background-size: cover;
 
   ${mq('md')`
-    height: 90%;
+    height: 85%;
   `}
 `
