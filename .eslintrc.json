@@ -1,0 +1,57 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "semi": [
+      2,
+      "never"
+    ],
+    "no-unused-vars": "off",
+    "import/order": [
+      "error"
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "camelcase": 0,
+    "no-console": 1,
+    "space-before-function-paren": 0,
+    "import/no-unresolved": 0,
+    "import/no-named-as-default": 0,
+    "react/no-array-index-key": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-first-prop-new-line": 1,
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-max-props-per-line": [
+      1,
+      {
+        "maximum": 4
+      }
+    ],
+    "import/no-anonymous-default-export": 0,
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all"
+      }
+    ],
+    "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/no-empty-interface": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-explicit-any": 0
+  }
+}
