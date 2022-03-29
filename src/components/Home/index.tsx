@@ -7,55 +7,40 @@ import {
   WhiteContent,
   ImageContent,
   ImageContainer,
+  BlackContainer,
 } from './styles'
-import { RATIO } from '~app/utils/constants'
 
-let intervalId
 const Home: React.FC = () => {
-  const [fullWidthRatio, setFullWidthRatio] = useState(100)
-  const [showInnerContainer, setShowInnerContainer] = useState(false)
-  const [innerWidthRatio, setInnerWidthRatio] = useState(0)
+  const [startHomeContainerTransition, setStartHomeContainerTransition] = useState(false)
+  const [showContentContainer, setShowContentContainer] = useState(false)
+  const [startContentContainerTransition, setStartContentContainerTransition] = useState(false)
   const [showInnerContent, setShowInnerContent] = useState(false)
 
   const intervalWidth = () => {
-    setShowInnerContainer(true)
-    let newRatio = 0
-    intervalId = setInterval(() => {
-      newRatio += RATIO
+    setTimeout(() => {
+      setStartContentContainerTransition(true)
 
-      if (newRatio >= 80) {
-        newRatio = 80
-        clearInterval(intervalId)
+      setTimeout(() => {
         setShowInnerContent(true)
-      }
-
-      setInnerWidthRatio(newRatio)
-    }, 10)
+      }, 1000)
+    }, 50)
   }
 
   useEffect(() => {
-    let newRatio = 100
     setTimeout(() => {
-      intervalId = setInterval(() => {
-        newRatio -= RATIO
-
-        if (newRatio <= 50) {
-          newRatio = 50
-          clearInterval(intervalId)
-          intervalWidth()
-        }
-
-        setFullWidthRatio(newRatio)
-      }, 10)
-    }, 500)
-
-    return () => clearInterval(intervalId)
+      setStartHomeContainerTransition(true)
+      setTimeout(() => {
+        setShowContentContainer(true)
+        intervalWidth()
+      }, 1400)
+    }, 200)
   }, [])
 
   return (
-    <HomeContainer widthRatio={fullWidthRatio}>
-      {showInnerContainer && (
-        <ContentContainer widthRatio={innerWidthRatio}>
+    <HomeContainer>
+      <BlackContainer showContent={startHomeContainerTransition} />
+      {showContentContainer && (
+        <ContentContainer showContent={startContentContainerTransition}>
           <InnerContentContainer>
             <WhiteContent showContent={showInnerContent}>
               <h1>Hi!</h1>
