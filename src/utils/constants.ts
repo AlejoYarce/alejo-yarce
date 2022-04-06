@@ -1,1 +1,7 @@
-export const RATIO = 0.5
+export const COLLECTIONS = {
+  GARDEN_HEALTH: 'garden-health',
+}
+
+export const IDS = {
+  HOME: 'home',
+}
