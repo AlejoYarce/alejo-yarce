@@ -25,6 +25,7 @@ export async function getServerSideProps(props) {
   const iotData = get(result, 'data', {})
 
   return {
+    notFound: process.env.NODE_ENV === 'production',
     props: {
       iotData,
     },

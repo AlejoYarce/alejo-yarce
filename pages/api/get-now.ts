@@ -15,15 +15,16 @@ const handler = async (req, res) => {
     const now = {
       ...snapshot,
       [year]: {
-        [month]: snapshot[year] && snapshot[year] && snapshot[year][month].map(item => {
-          const data = {
-            ...item,
-            lastUpdate: item.date.toDate(),
-          }
-          delete data.date
+        [month]: snapshot[year] && snapshot[year] && snapshot[year][month] && snapshot[year][month]
+          .map(item => {
+            const data = {
+              ...item,
+              lastUpdate: item.date.toDate(),
+            }
+            delete data.date
 
-          return data
-        }),
+            return data
+          }),
       },
     }
 
