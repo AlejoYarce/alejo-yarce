@@ -20,8 +20,10 @@ export default HomePage
 export async function getServerSideProps(props) {
   const { req: { headers } } = props
   const host = getProtocol(headers.host)
+  console.log(11, host)
 
-  const result = await axios.get(`${host || 'http://localhost:3000'}/api/get-now`)
+  // const result = await axios.get(`${host || 'http://localhost:3000'}/api/get-now`)
+  const result = await axios.get('http://localhost:9999/.netlify/functions/get-now')
   const iotData = get(result, 'data', {})
 
   return {

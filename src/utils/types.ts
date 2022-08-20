@@ -1,7 +1,5 @@
-import { Timestamp } from "firebase/firestore"
-
 export interface IotItemProps {
-  date?: Timestamp
+  date?: Date
   lastUpdate?: Date
   temp: number
   daylight: number
