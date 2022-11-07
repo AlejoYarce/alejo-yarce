@@ -7,13 +7,14 @@ const { updateDocument } = require('./lib/firebase')
 exports.handler = async (event) => {
   const body = JSON.parse(event.body || '{}')
   const {
-    romero,
+    plantName,
+    plantValue,
     ip,
   } = body
 
   try {
     const data = {
-      romero,
+      [plantName]: plantValue ? parseFloat(plantValue) : 0,
       date: new Date(),
     }
     const year = dayjs().format('YYYY')
@@ -21,10 +22,10 @@ exports.handler = async (event) => {
 
     await updateDocument(
       'garden-health',
-      'home',
+      year,
       {
         now: data,
-        [`${year}.${month}`]: firestore.FieldValue.arrayUnion(data),
+        [month]: firestore.FieldValue.arrayUnion(data),
         ip,
       },
     )

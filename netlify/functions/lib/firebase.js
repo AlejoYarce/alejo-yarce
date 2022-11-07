@@ -31,6 +31,7 @@ exports.getDocument = async (collectionName, id) => {
 exports.updateDocument = async (collectionName, id, data) => {
   const firestore = app.firestore()
   const ref = firestore.collection(collectionName).doc(id)
+  // await ref.update(data)
 
-  await ref.update(data)
+  await ref.set(data, { merge: true })
 }
