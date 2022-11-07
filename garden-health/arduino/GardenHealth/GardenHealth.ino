@@ -32,6 +32,7 @@ float temp_c = 0;
 String ip = "";
 String query = "";
 unsigned long previousMillis = 0;
+int attempts = 1;
 
 //////////////////////// CODE
 String SendHTML(bool showData) {
@@ -195,7 +196,7 @@ void loop() {
 
   //////////////////////// CODE
   unsigned long currentMillis = millis();
-  if ((unsigned long)(currentMillis - previousMillis) >= (60000 * 20)) {
+  if ((unsigned long)(currentMillis - previousMillis) >= (60000 * 30)) {
     query = "{";
 
     // getTemp();
@@ -291,9 +292,10 @@ void validateWatering() {
 
 void publishData() {
   if (WiFi.status() == WL_CONNECTED) {
+    bool error = false;
+
     digitalWrite(2, HIGH);
-    // String server = "https://alejoyarce.com/api/set-now";
-    String server = "http://192.168.1.17:8888/.netlify/functions/set-now";
+    String server = "https://alejoyarce.com/api/set-now";
     http.begin(server);
     http.addHeader("Content-Type", "application/json");
 
@@ -314,10 +316,18 @@ void publishData() {
     } else {
       Serial.print("Error on sending POST: ");
       Serial.println(httpResponseCode);
+      error = true;
     }
 
     http.end();
     digitalWrite(2, LOW);
+
+    if (error == true && attempts < 3) {
+      attempts = attempts + 1;
+      publishData();
+    } else {
+      attempts = 0;
+    }
   } else {
     Serial.println("Error in WiFi connection");
   }
