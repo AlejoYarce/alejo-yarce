@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const dayjs = require('dayjs')
 const { firestore } = require('firebase-admin')
+const messagebird = require('messagebird')(process.env.MESSAGEBIRD_API_KEY)
 
 const { updateDocument } = require('./lib/firebase')
 
@@ -12,9 +13,11 @@ exports.handler = async (event) => {
     ip,
   } = body
 
+  const formattedValue = plantValue ? parseFloat(plantValue) : 0
+
   try {
     const data = {
-      [plantName]: plantValue ? parseFloat(plantValue) : 0,
+      [plantName]: formattedValue,
       date: new Date(),
     }
     const year = dayjs().format('YYYY')
@@ -29,6 +32,19 @@ exports.handler = async (event) => {
         ip,
       },
     )
+
+    if (formattedValue <= 35) {
+      const params = {
+        'originator': process.env.MESSAGEBIRD_NUMBER,
+        'recipients': [process.env.MESSAGEBIRD_NUMBER],
+        'body': 'Holi, necesito agüita',
+      }
+      await messagebird.messages.create(params, (err) => {
+        if (err) {
+          return console.log('error', err)
+        }
+      })
+    }
 
     return {
       statusCode: 200,
