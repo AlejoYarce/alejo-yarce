@@ -34,7 +34,7 @@ exports.handler = async (event) => {
     )
 
     console.log({ formattedValue })
-    if (formattedValue < 60) {
+    if (formattedValue <= 65) {
       const params = {
         originator: process.env.MESSAGEBIRD_NUMBER,
         recipients: [process.env.MESSAGEBIRD_NUMBER],
