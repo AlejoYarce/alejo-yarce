@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const dayjs = require('dayjs')
 const { firestore } = require('firebase-admin')
-const messagebird = require('messagebird')(process.env.MESSAGEBIRD_API_KEY)
+const { sendSms } = require('./lib/sender')
 
 const { updateDocument } = require('./lib/firebase')
 
@@ -33,21 +33,9 @@ exports.handler = async (event) => {
       },
     )
 
-    console.log(formattedValue <= 65, { formattedValue })
+    console.log({ formattedValue })
     if (formattedValue <= 65) {
-      const params = {
-        originator: process.env.MESSAGEBIRD_NUMBER,
-        recipients: [process.env.MESSAGEBIRD_NUMBER],
-        body: `Holi, necesito aguaaaa - ${formattedValue}%`,
-      }
-      console.log({ params })
-      await messagebird.messages.create(params, (err, response) => {
-        if (err) {
-          return console.log('error', err)
-        }
-
-        console.log('response', response)
-      })
+      await sendSms(`Holi, necesito aguaaaa - ${formattedValue}%`)
     }
 
     return {
