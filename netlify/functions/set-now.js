@@ -33,13 +33,14 @@ exports.handler = async (event) => {
       },
     )
 
-    console.log({ formattedValue })
+    console.log(formattedValue <= 65, { formattedValue })
     if (formattedValue <= 65) {
       const params = {
         originator: process.env.MESSAGEBIRD_NUMBER,
         recipients: [process.env.MESSAGEBIRD_NUMBER],
         body: `Holi, necesito aguaaaa - ${formattedValue}%`,
       }
+      console.log({ params })
       await messagebird.messages.create(params, (err, response) => {
         if (err) {
           return console.log('error', err)
